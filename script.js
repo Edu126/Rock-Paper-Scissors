@@ -23,7 +23,7 @@ const overlay = document.querySelector('.overlay');
 // Selecting the player's choice
 let selection = document.querySelector('#buttons');
 selectionListen = selection.addEventListener('click', function(e) 
-    {roundNum++;
+    {roundNum++;console.log(roundNum);
         const playAgainBtn = document.querySelector('.btn');
         playAgainBtn.addEventListener('click', restartGame);
     if (roundNum === 5) {game();openModal();}; 
@@ -37,7 +37,7 @@ selectionListen = selection.addEventListener('click', function(e)
 
 //Generating the random selection for computer
 function getComputerChoice () {
-    let arr = ['rock' ,'paper' ,'scissors'];
+    let arr = ['rock' ,'paper' ,'scissor'];
     let randomARR = arr[Math.floor(Math.random() * arr.length)];
     return randomARR
 }
@@ -57,16 +57,16 @@ function playRound (playerSelection, computerSelection) {
 if (playerSelection === computerSelection) {
     result.textContent = "Hey! It's a tie, let's try one more time";played();}
 
-else if (playerSelection === 'rock' && computerSelection === 'scissors') {
-    result.textContent = "You Win! Rock beats Scissors"; playerScore++;
+else if (playerSelection === 'rock' && computerSelection === 'scissor') {
+    result.textContent = "You Win! Rock beats Scissor"; playerScore++;
     resultPlayer.textContent = "Player Score: " + playerScore;played();}
 
 else if (playerSelection === 'paper' && computerSelection === 'rock') {
     result.textContent ="You Win! Paper beats Rock"; playerScore++;
     resultPlayer.textContent = "Player Score: " + playerScore;played();}
 
-else if (playerSelection === 'scissors' && computerSelection === 'paper') {
-    result.textContent ="You Win! Scissors beats Paper"; playerScore++;
+else if (playerSelection === 'scissor' && computerSelection === 'paper') {
+    result.textContent ="You Win! Scissor beats Paper"; playerScore++;
     resultPlayer.textContent = "Player Score: " + playerScore;played();}
 
 else {
@@ -84,6 +84,7 @@ function game() {
 }
 
 function openModal() {
+    
     overlay.style.display = "block";
     modal.style.display = "block";
   }
@@ -92,3 +93,10 @@ function openModal() {
 function restartGame() {
     window.location.reload(); 
 }
+
+
+function timeFunction() {
+    setTimeout(function(){ return }, 2000);
+}
+
+
